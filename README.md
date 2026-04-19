@@ -1,5 +1,3 @@
-## Status
-
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 <p align="left">
