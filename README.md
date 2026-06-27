@@ -4,9 +4,6 @@
   <a href="https://github.com/harry2480">
     <img src="https://komarev.com/ghpvc/?username=harry2480&style=plastic" alt="harry2480" />
   </a>
-  <a href="https://x.com/harry_2480">
-    <img height="20" src="https://img.shields.io/twitter/follow/harry_2480?label=Twitter&logo=twitter&style=plastic" />
-  </a>
   <a href="https://github.com/harry2480">
     <img height="20" src="https://img.shields.io/github/followers/harry2480?label=follow&logo=github&style=plastic" />
   </a>
@@ -32,7 +29,7 @@ Hey there! My name is Harry a developer passionate about making the world a bett
 ## Repository
 
 [![portfolio](https://github-readme-stats.vercel.app/api/pin/?username=harry2480&repo=portfolio&theme=radical)](https://github.com/harry2480/portfolio)
-[![YouTube-URL-Copier](https://github-readme-stats.vercel.app/api/pin/?username=harry2480&repo=YouTube-URL-Copier&theme=radical)](https://github.com/harry2480/YouTube-URL-Copier)
+[![starter-templete](https://github-readme-stats.vercel.app/api/pin/?username=harry2480&repo=starter-templete&theme=radical)](https://github.com/harry2480/starter-templete)
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
@@ -40,7 +37,7 @@ Hey there! My name is Harry a developer passionate about making the world a bett
 
 <p align="center">
   <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=git,githubactions,github,pnpm,aws,cloudflare,notion,mysql" />
+    <img src="https://skillicons.dev/icons?i=git,githubactions,github,typescript,pnpm,npm,googlecloud,cloudflare,notion,mysql" />
   </a>
 </p>
 
@@ -48,7 +45,7 @@ Hey there! My name is Harry a developer passionate about making the world a bett
 
 <p align="center">
   <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=go,vite,cloudflare,vercel,remix" />
+    <img src="https://skillicons.dev/icons?i=go,remix,swift" />
   </a>
 </p>
 
