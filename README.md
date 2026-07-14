@@ -31,8 +31,10 @@ Hey there! My name is Harry a developer passionate about making the world a bett
 
 ## Repository
 
-[![portfolio](https://github-readme-stats-git-main-anuraghazras-projects.vercel.app/api/pin/?username=harry2480&repo=portfolio&theme=radical)](https://github.com/harry2480/portfolio)
-[![starter-templete](https://github-readme-stats-git-main-anuraghazras-projects.vercel.app/api/pin/?username=harry2480&repo=starter-templete&theme=radical)](https://github.com/harry2480/starter-templete)
+<!-- BEGIN REPOS -->
+[![portfolio](https://github.com/harry2480/portfolio)](https://github.com/harry2480/portfolio)
+[![starter-templete](https://github.com/harry2480/starter-templete)](https://github.com/harry2480/starter-templete)
+<!-- END REPOS -->
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 

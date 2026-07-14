@@ -6,12 +6,11 @@ const path = require('path');
 const USERNAME = 'harry2480';
 const README_PATH = path.join(__dirname, '..', 'README.md');
 
-// GitHub API でユーザー情報とリポジトリ情報を取得
-async function fetchGitHubData() {
+function fetchAPI(path) {
   return new Promise((resolve, reject) => {
     const options = {
       hostname: 'api.github.com',
-      path: `/users/${USERNAME}/repos?sort=updated&per_page=100`,
+      path,
       method: 'GET',
       headers: {
         'User-Agent': 'GitHub-Readme-Action',
@@ -24,12 +23,7 @@ async function fetchGitHubData() {
       res.on('data', chunk => data += chunk);
       res.on('end', () => {
         try {
-          const parsed = JSON.parse(data);
-          if (Array.isArray(parsed)) {
-            resolve(parsed);
-          } else {
-            reject(new Error(`Unexpected API response: ${JSON.stringify(parsed).substring(0, 200)}`));
-          }
+          resolve(JSON.parse(data));
         } catch (e) {
           reject(e);
         }
@@ -38,7 +32,15 @@ async function fetchGitHubData() {
   });
 }
 
-// 言語統計を集計
+async function fetchGitHubData() {
+  return fetchAPI(`/users/${USERNAME}/repos?sort=updated&per_page=100`);
+}
+
+async function getRepoLanguages(repo) {
+  const data = await fetchAPI(`/repos/${USERNAME}/${repo}/languages`);
+  return data || {};
+}
+
 function calculateLanguages(repos) {
   const languages = {};
   repos.forEach(repo => {
@@ -51,7 +53,6 @@ function calculateLanguages(repos) {
     .slice(0, 5);
 }
 
-// SVG画像を生成
 function generateSVG(title, content, width = 400, height = 200) {
   return `<svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg">
     <defs>
@@ -67,7 +68,17 @@ function generateSVG(title, content, width = 400, height = 200) {
   </svg>`;
 }
 
-// README を更新
+function generateRepoCard(title, content) {
+  return `<div style="display: inline-block; margin: 10px; text-align: center;">
+  <a href="https://github.com/${USERNAME}/${title}" style="text-decoration: none;">
+    <div style="border: 1px solid #30363d; border-radius: 6px; padding: 16px; background: #0d1117;">
+      <h3 style="color: #58a6ff; margin: 0 0 8px 0; font-size: 14px;">${title}</h3>
+      ${content}
+    </div>
+  </a>
+</div>`;
+}
+
 async function updateReadme() {
   try {
     console.log('📊 Fetching GitHub data...');
@@ -90,12 +101,10 @@ async function updateReadme() {
     const statsContent = `<text class="content" x="20" y="60">Repositories: ${totalRepos}</text>
       <text class="content" x="20" y="85">Total Stars: ${totalStars}</text>`;
 
-    const topLangsSvg = generateSVG('Top Languages', topLangsContent).replace(/\n/g, '').replace(/"/g, '\\"');
-    const statsSvg = generateSVG('GitHub Stats', statsContent).replace(/\n/g, '').replace(/"/g, '\\"');
-
-    // README.md の統計部分を置き換え
+    // README.md を読み込み
     let readmeContent = fs.readFileSync(README_PATH, 'utf8');
 
+    // Stats セクションの更新
     const statsHtml = `<!-- BEGIN GITHUB STATS -->
 <p align="left">
   <img alt="Top Langs" height="195px" src="data:image/svg+xml;base64,${Buffer.from(generateSVG('Top Languages', topLangsContent)).toString('base64')}" />
@@ -107,6 +116,17 @@ async function updateReadme() {
     readmeContent = readmeContent.replace(
       /<!-- BEGIN GITHUB STATS -->[\s\S]*?<!-- END GITHUB STATS -->/,
       statsHtml
+    );
+
+    // Repository セクションの更新
+    const reposHtml = `<!-- BEGIN REPOS -->
+[![portfolio](https://img.shields.io/badge/portfolio-GitHub-0d1117?style=for-the-badge&logo=github&logoColor=58a6ff)](https://github.com/harry2480/portfolio)
+[![starter--templete](https://img.shields.io/badge/starter--templete-GitHub-0d1117?style=for-the-badge&logo=github&logoColor=58a6ff)](https://github.com/harry2480/starter-templete)
+<!-- END REPOS -->`;
+
+    readmeContent = readmeContent.replace(
+      /<!-- BEGIN REPOS -->[\s\S]*?<!-- END REPOS -->/,
+      reposHtml
     );
 
     fs.writeFileSync(README_PATH, readmeContent);
