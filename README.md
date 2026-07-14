@@ -32,8 +32,8 @@ Hey there! My name is Harry a developer passionate about making the world a bett
 ## Repository
 
 <!-- BEGIN REPOS -->
-[![portfolio](https://img.shields.io/badge/portfolio-GitHub-0d1117?style=for-the-badge&logo=github&logoColor=58a6ff)](https://github.com/harry2480/portfolio)
-[![starter--templete](https://img.shields.io/badge/starter--templete-GitHub-0d1117?style=for-the-badge&logo=github&logoColor=58a6ff)](https://github.com/harry2480/starter-templete)
+[![portfolio](https://github.com/harry2480/portfolio)](https://github.com/harry2480/portfolio)
+[![starter-templete](https://github.com/harry2480/starter-templete)](https://github.com/harry2480/starter-templete)
 <!-- END REPOS -->
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
