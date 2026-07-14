@@ -66,5 +66,5 @@ Hey there! My name is Harry a developer passionate about making the world a bett
 
 ### Links
 
-[![Twitter](https://img.shields.io/badge/-@harry_2480-000000?style=flat-square&logo=x&logoColor=white)](https://twitter.com/nya3_neko2)
-[![Zenn](https://img.shields.io/badge/-zenn-3ea8ff?style=flat-square&logo=zenn&logoColor=white)](https://qiita.com/nya3_neko2)
+[![Twitter](https://img.shields.io/badge/-@harry_2480-000000?style=flat-square&logo=x&logoColor=white)](https://twitter.com/harry_2480)
+[![Zenn](https://img.shields.io/badge/-zenn-3ea8ff?style=flat-square&logo=zenn&logoColor=white)](https://qiita.com/harry_2480)
