@@ -5,12 +5,18 @@ const path = require('path');
 
 const USERNAME = 'harry2480';
 const README_PATH = path.join(__dirname, '..', 'README.md');
+const STATS_DIR = path.join(__dirname, '..', '.github', 'stats');
 
-function fetchAPI(path) {
+// ディレクトリ作成
+if (!fs.existsSync(STATS_DIR)) {
+  fs.mkdirSync(STATS_DIR, { recursive: true });
+}
+
+function fetchAPI(apiPath) {
   return new Promise((resolve, reject) => {
     const options = {
       hostname: 'api.github.com',
-      path,
+      path: apiPath,
       method: 'GET',
       headers: {
         'User-Agent': 'GitHub-Readme-Action',
@@ -34,11 +40,6 @@ function fetchAPI(path) {
 
 async function fetchGitHubData() {
   return fetchAPI(`/users/${USERNAME}/repos?sort=updated&per_page=100`);
-}
-
-async function getRepoLanguages(repo) {
-  const data = await fetchAPI(`/repos/${USERNAME}/${repo}/languages`);
-  return data || {};
 }
 
 function calculateLanguages(repos) {
@@ -68,17 +69,6 @@ function generateSVG(title, content, width = 400, height = 200) {
   </svg>`;
 }
 
-function generateRepoCard(title, content) {
-  return `<div style="display: inline-block; margin: 10px; text-align: center;">
-  <a href="https://github.com/${USERNAME}/${title}" style="text-decoration: none;">
-    <div style="border: 1px solid #30363d; border-radius: 6px; padding: 16px; background: #0d1117;">
-      <h3 style="color: #58a6ff; margin: 0 0 8px 0; font-size: 14px;">${title}</h3>
-      ${content}
-    </div>
-  </a>
-</div>`;
-}
-
 async function updateReadme() {
   try {
     console.log('📊 Fetching GitHub data...');
@@ -101,14 +91,23 @@ async function updateReadme() {
     const statsContent = `<text class="content" x="20" y="60">Repositories: ${totalRepos}</text>
       <text class="content" x="20" y="85">Total Stars: ${totalStars}</text>`;
 
+    // SVG ファイルに保存
+    const topLangsSvg = generateSVG('Top Languages', topLangsContent);
+    const statsSvg = generateSVG('GitHub Stats', statsContent);
+
+    fs.writeFileSync(path.join(STATS_DIR, 'top-langs.svg'), topLangsSvg);
+    fs.writeFileSync(path.join(STATS_DIR, 'github-stats.svg'), statsSvg);
+
+    console.log('✅ SVG files generated');
+
     // README.md を読み込み
     let readmeContent = fs.readFileSync(README_PATH, 'utf8');
 
     // Stats セクションの更新
     const statsHtml = `<!-- BEGIN GITHUB STATS -->
 <p align="left">
-  <img alt="Top Langs" height="195px" src="data:image/svg+xml;base64,${Buffer.from(generateSVG('Top Languages', topLangsContent)).toString('base64')}" />
-  <img alt="github stats" height="195px" src="data:image/svg+xml;base64,${Buffer.from(generateSVG('GitHub Stats', statsContent)).toString('base64')}" />
+  <img alt="Top Langs" height="195px" src=".github/stats/top-langs.svg" />
+  <img alt="github stats" height="195px" src=".github/stats/github-stats.svg" />
   <img alt="contributions" height="300px" src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=${USERNAME}&theme=2077">
 </p>
 <!-- END GITHUB STATS -->`;
