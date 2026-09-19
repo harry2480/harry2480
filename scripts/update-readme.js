@@ -104,7 +104,9 @@ async function updateReadme() {
     let readmeContent = fs.readFileSync(README_PATH, 'utf8');
 
     // Stats セクションの更新
+    const updatedAt = new Date().toISOString().slice(0, 10);
     const statsHtml = `<!-- BEGIN GITHUB STATS -->
+<!-- Updated: ${updatedAt} -->
 <p align="left">
   <img alt="Top Langs" height="195px" src=".github/stats/top-langs.svg" />
   <img alt="github stats" height="195px" src=".github/stats/github-stats.svg" />

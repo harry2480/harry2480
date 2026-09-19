@@ -1,0 +1,12 @@
+<svg width="400" height="200" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <style>
+        .stat-box { fill: #0d1117; stroke: #30363d; stroke-width: 1; }
+        .title { fill: #58a6ff; font-size: 16px; font-weight: bold; }
+        .content { fill: #c9d1d9; font-size: 14px; }
+      </style>
+    </defs>
+    <rect class="stat-box" width="400" height="200" rx="6" />
+    <text class="title" x="20" y="30">Top Languages</text>
+    <text class="content" x="20" y="60">TypeScript: 16 repos</text><text class="content" x="20" y="85">JavaScript: 6 repos</text><text class="content" x="20" y="110">C#: 3 repos</text><text class="content" x="20" y="135">Swift: 3 repos</text><text class="content" x="20" y="160">HTML: 3 repos</text>
+  </svg>
