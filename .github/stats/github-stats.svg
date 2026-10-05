@@ -8,6 +8,6 @@
     </defs>
     <rect class="stat-box" width="400" height="200" rx="6" />
     <text class="title" x="20" y="30">GitHub Stats</text>
-    <text class="content" x="20" y="60">Repositories: 41</text>
+    <text class="content" x="20" y="60">Repositories: 42</text>
       <text class="content" x="20" y="85">Total Stars: 2</text>
   </svg>
