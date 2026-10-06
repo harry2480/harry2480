@@ -8,5 +8,5 @@
     </defs>
     <rect class="stat-box" width="400" height="200" rx="6" />
     <text class="title" x="20" y="30">Top Languages</text>
-    <text class="content" x="20" y="60">TypeScript: 16 repos</text><text class="content" x="20" y="85">JavaScript: 6 repos</text><text class="content" x="20" y="110">C#: 3 repos</text><text class="content" x="20" y="135">Swift: 3 repos</text><text class="content" x="20" y="160">HTML: 3 repos</text>
+    <text class="content" x="20" y="60">TypeScript: 15 repos</text><text class="content" x="20" y="85">JavaScript: 6 repos</text><text class="content" x="20" y="110">C#: 3 repos</text><text class="content" x="20" y="135">Swift: 3 repos</text><text class="content" x="20" y="160">HTML: 3 repos</text>
   </svg>
